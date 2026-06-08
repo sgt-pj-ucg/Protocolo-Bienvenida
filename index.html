@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo de Bienvenida · Corte de Apelaciones La Serena</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul: #1a4a7a;
+  --azul-med: #2563a8;
+  --azul-light: #dbeafe;
+  --azul-xlight: #eff6ff;
+  --verde: #166534;
+  --verde-med: #16a34a;
+  --verde-light: #dcfce7;
+  --verde-xlight: #f0fdf4;
+  --ambar: #92400e;
+  --ambar-med: #d97706;
+  --ambar-light: #fef3c7;
+  --ambar-xlight: #fffbeb;
+  --gris: #374151;
+  --gris-med: #6b7280;
+  --gris-light: #f3f4f6;
+  --blanco: #ffffff;
+  --sombra: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --sombra-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05);
+  --sombra-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --radio: 12px;
+  --radio-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f8fafc; color: var(--gris); line-height: 1.6; }
+a { color: var(--azul-med); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── NAV ── */
+nav {
+  background: var(--azul);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  height: 60px;
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-logo {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo svg { width: 22px; height: 22px; }
+.nav-title { color: #fff; font-size: 14px; font-weight: 600; }
+.nav-subtitle { color: rgba(255,255,255,0.6); font-size: 11px; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link {
+  color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 500;
+  padding: 6px 14px; border-radius: 6px; cursor: pointer;
+  transition: all 0.15s; border: none; background: none;
+}
+.nav-link:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.nav-link.active { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--azul) 0%, #1e3a5f 50%, #0f2744 100%);
+  padding: 4rem 2rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 500;
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff; font-weight: 700; line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero p {
+  color: rgba(255,255,255,0.75); font-size: 1rem;
+  max-width: 560px; margin: 0 auto 2rem;
+}
+.hero-cats {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.hero-cat {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 13px; font-weight: 500;
+  padding: 8px 18px; border-radius: 24px; cursor: pointer;
+  transition: all 0.2s;
+}
+.hero-cat:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+.hero-cat.t:hover, .hero-cat.t.sel { background: var(--azul-med); border-color: var(--azul-med); }
+.hero-cat.s:hover, .hero-cat.s.sel { background: var(--verde-med); border-color: var(--verde-med); }
+.hero-cat.p:hover, .hero-cat.p.sel { background: var(--ambar-med); border-color: var(--ambar-med); }
+
+/* ── LAYOUT ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.main { padding: 2.5rem 0; }
+
+/* ── TABS SECUNDARIAS ── */
+.tabs-bar {
+  display: flex; gap: 6px;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 6px;
+  box-shadow: var(--sombra);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.tab-btn2 {
+  flex: 1; min-width: 140px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 10px 16px; border-radius: 8px;
+  border: none; cursor: pointer; transition: all 0.2s;
+  background: transparent; color: var(--gris-med);
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.tab-btn2:hover { background: var(--gris-light); color: var(--gris); }
+.tab-btn2.at { background: var(--azul); color: #fff; box-shadow: var(--sombra-md); }
+.tab-btn2.as { background: var(--verde-med); color: #fff; box-shadow: var(--sombra-md); }
+.tab-btn2.ap { background: var(--ambar-med); color: #fff; box-shadow: var(--sombra-md); }
+.tab-btn2.ac { background: var(--gris); color: #fff; box-shadow: var(--sombra-md); }
+
+/* ── PANEL ── */
+.panel { display: none; animation: fadeIn 0.25s ease; }
+.panel.show { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── BANNER ── */
+.banner {
+  border-radius: var(--radio);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: flex-start; gap: 16px;
+  border-left: 4px solid;
+}
+.banner.t { background: var(--azul-xlight); border-color: var(--azul-med); }
+.banner.s { background: var(--verde-xlight); border-color: var(--verde-med); }
+.banner.p { background: var(--ambar-xlight); border-color: var(--ambar-med); }
+.banner-icon { font-size: 2rem; flex-shrink: 0; }
+.banner h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.banner p { font-size: 13px; color: var(--gris-med); line-height: 1.5; }
+
+/* ── ETAPAS BARRA ── */
+.etapas-wrap { margin-bottom: 1.5rem; }
+.etapas-label { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gris-med); margin-bottom: 8px; }
+.etapas-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.etapa-btn {
+  font-size: 12px; font-weight: 500; padding: 6px 14px;
+  border-radius: 20px; border: 1.5px solid #e5e7eb;
+  background: var(--blanco); cursor: pointer; transition: all 0.15s;
+  color: var(--gris-med);
+}
+.etapa-btn:hover { border-color: #9ca3af; color: var(--gris); }
+.etapa-btn.et { background: var(--azul); color: #fff; border-color: var(--azul); }
+.etapa-btn.es { background: var(--verde-med); color: #fff; border-color: var(--verde-med); }
+.etapa-btn.ep { background: var(--ambar-med); color: #fff; border-color: var(--ambar-med); }
+
+/* ── PASO CARD ── */
+.paso-card {
+  background: var(--blanco);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radio);
+  margin-bottom: 14px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.paso-card:hover { box-shadow: var(--sombra-md); }
+.paso-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+.paso-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.nt { background: var(--azul); }
+.ns { background: var(--verde-med); }
+.np { background: var(--ambar-med); }
+.paso-info { flex: 1; }
+.paso-tit { font-size: 15px; font-weight: 600; color: var(--gris); }
+.paso-sub { font-size: 12px; color: var(--gris-med); margin-top: 2px; }
+.paso-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+.chip {
+  font-size: 11px; font-weight: 500; padding: 2px 8px;
+  border-radius: 10px;
+}
+.chip-t { background: var(--azul-light); color: var(--azul); }
+.chip-s { background: var(--verde-light); color: var(--verde); }
+.chip-p { background: var(--ambar-light); color: var(--ambar); }
+.chip-g { background: #f3f4f6; color: var(--gris-med); }
+.paso-toggle {
+  font-size: 18px; color: var(--gris-med);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.paso-toggle.open { transform: rotate(180deg); }
+.paso-body {
+  padding: 1rem 1.25rem;
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+.paso-body.open { display: block; }
+.alcance-note {
+  font-size: 12px; color: var(--gris-med); font-style: italic;
+  background: var(--gris-light); border-radius: 6px;
+  padding: 8px 12px; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.accion {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0; border-bottom: 1px solid #f3f4f6;
+  font-size: 14px; line-height: 1.5;
+}
+.accion:last-child { border-bottom: none; }
+.accion-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 7px;
+}
+.dt { background: var(--azul-med); }
+.ds { background: var(--verde-med); }
+.dp { background: var(--ambar-med); }
+
+/* ── KIT DOCS ── */
+.kit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 10px; }
+.kit-doc {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; border: 1px solid #e5e7eb;
+  font-size: 13px; font-weight: 500;
+  background: #fafafa; transition: all 0.15s;
+}
+.kit-doc:hover { background: var(--azul-xlight); border-color: var(--azul-light); }
+.kit-doc.no { opacity: 0.4; pointer-events: none; }
+.kit-icon { font-size: 18px; flex-shrink: 0; }
+.kit-doc a { color: inherit; }
+
+/* ── TABLA COMPARATIVA ── */
+.tabla-comp {
+  background: var(--blanco);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+.tc-head {
+  display: grid; grid-template-columns: 36px 2fr 1fr 1fr 1fr;
+  gap: 0; background: var(--azul); color: #fff;
+  font-size: 12px; font-weight: 600; padding: 10px 16px;
+}
+.tc-row {
+  display: grid; grid-template-columns: 36px 2fr 1fr 1fr 1fr;
+  gap: 0; padding: 11px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 13px; transition: background 0.1s;
+  align-items: center;
+}
+.tc-row:hover { background: var(--gris-light); }
+.tc-row:last-child { border-bottom: none; }
+.tc-num { font-weight: 700; color: var(--gris-med); font-size: 12px; }
+.tc-paso { font-weight: 500; color: var(--gris); }
+.tc-ok { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; }
+.tc-ok.t { color: var(--azul-med); }
+.tc-ok.s { color: var(--verde-med); }
+.tc-ok.p { color: var(--ambar-med); }
+.tc-no { font-size: 12px; color: #d1d5db; }
+
+/* ── RECURSOS ── */
+.recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.recurso-card {
+  background: var(--blanco); border: 1px solid #e5e7eb;
+  border-radius: var(--radio); padding: 1.25rem;
+  box-shadow: var(--sombra); transition: all 0.2s;
+}
+.recurso-card:hover { box-shadow: var(--sombra-lg); transform: translateY(-2px); border-color: var(--azul-light); }
+.rec-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.rec-titulo { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+.rec-desc { font-size: 12px; color: var(--gris-med); margin-bottom: 12px; line-height: 1.5; }
+.rec-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 500;
+  padding: 5px 12px; border-radius: 6px;
+  background: var(--azul-xlight); color: var(--azul-med);
+  transition: all 0.15s; border: 1px solid var(--azul-light);
+}
+.rec-link:hover { background: var(--azul-light); text-decoration: none; }
+
+/* ── CIERRE ── */
+.cierre-box {
+  border-radius: var(--radio);
+  padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.cierre-box.t { background: var(--azul-xlight); border: 1px solid var(--azul-light); }
+.cierre-box.s { background: var(--verde-xlight); border: 1px solid #bbf7d0; }
+.cierre-box.p { background: var(--ambar-xlight); border: 1px solid #fde68a; }
+.cierre-box blockquote { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.5; margin-bottom: 8px; }
+.cierre-box span { font-size: 12px; color: var(--gris-med); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--azul); color: rgba(255,255,255,0.7);
+  text-align: center; padding: 1.5rem;
+  font-size: 12px; margin-top: 4rem;
+}
+footer strong { color: #fff; }
+
+/* ── UTILIDADES ── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.section-title {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gris-med); margin-bottom: 12px;
+}
+.mt { margin-top: 1.5rem; }
+.divider { height: 1px; background: #e5e7eb; margin: 2rem 0; }
+@media (max-width: 640px) {
+  .tc-head, .tc-row { grid-template-columns: 28px 1fr 1fr 1fr 1fr; font-size: 11px; padding: 8px; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-title">Protocolo de Bienvenida</div>
+      <div class="nav-subtitle">Corte de Apelaciones La Serena · 2026</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="scrollTo(0,0)">Inicio</button>
+    <button class="nav-link" onclick="document.getElementById('sec-protocolo').scrollIntoView({behavior:'smooth'})">Protocolo</button>
+    <button class="nav-link" onclick="switchTab('comp'); document.getElementById('sec-protocolo').scrollIntoView({behavior:'smooth'})">Comparativo</button>
+    <button class="nav-link" onclick="switchTab('rec'); document.getElementById('sec-protocolo').scrollIntoView({behavior:'smooth'})">Recursos</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📋 Versión 2 · Enero 2026 · Poder Judicial</div>
+  <h1>Protocolo de Bienvenida<br>para Nuevos Funcionarios</h1>
+  <p>Guía práctica para jefaturas de la Corte de Apelaciones de La Serena. Selecciona la categoría para ver el protocolo correspondiente.</p>
+  <div class="hero-cats">
+    <div class="hero-cat t sel" onclick="switchTab('titular')">🏛️ Funcionario/a Titular</div>
+    <div class="hero-cat s" onclick="switchTab('suplente')">🔄 Funcionario/a Suplente</div>
+    <div class="hero-cat p" onclick="switchTab('pasante')">📚 Pasante / Practicante</div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="container">
+<main class="main" id="sec-protocolo">
+
+  <!-- TABS -->
+  <div class="tabs-bar">
+    <button class="tab-btn2 at" onclick="switchTab('titular')">🏛️ Titular</button>
+    <button class="tab-btn2" onclick="switchTab('suplente')">🔄 Suplente</button>
+    <button class="tab-btn2" onclick="switchTab('pasante')">📚 Pasante</button>
+    <button class="tab-btn2" onclick="switchTab('comp')">📊 Comparativo</button>
+    <button class="tab-btn2" onclick="switchTab('rec')">🔗 Recursos</button>
+  </div>
+
+  <!-- ===================== TITULAR ===================== -->
+  <div class="panel show" id="panel-titular">
+    <div class="banner t">
+      <div class="banner-icon">🏛️</div>
+      <div>
+        <h3 style="color:var(--azul)">Funcionario/a Titular</h3>
+        <p>Persona que ingresa a una plaza permanente mediante nombramiento oficial de la Presidencia de la Corte. Recibe el protocolo completo de <strong>10 pasos</strong> con acompañamiento durante el primer mes, todos los accesos institucionales y el kit de documentos completo.</p>
+      </div>
+    </div>
+
+    <div class="etapas-wrap">
+      <div class="etapas-label">Filtrar por etapa</div>
+      <div class="etapas-row" id="chips-t">
+        <button class="etapa-btn et" onclick="filtrarEtapa('t','todos')">Todas</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('t','Antes del ingreso')">Antes del ingreso</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('t','Día 1')">Día 1</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('t','Primera semana')">Primera semana</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('t','Semanas 1–2')">Semanas 1–2</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('t','Primer mes')">Primer mes</button>
+      </div>
+    </div>
+
+    <div id="pasos-titular"></div>
+
+    <div class="cierre-box t">
+      <blockquote style="color:var(--azul)">"Tu rol es fundamental para fortalecer la justicia y el servicio público.<br>Estamos aquí para acompañarte en cada paso."</blockquote>
+      <span>Cierre del Proceso · Corte de Apelaciones de La Serena</span>
+    </div>
+  </div>
+
+  <!-- ===================== SUPLENTE ===================== -->
+  <div class="panel" id="panel-suplente">
+    <div class="banner s">
+      <div class="banner-icon">🔄</div>
+      <div>
+        <h3 style="color:var(--verde)">Funcionario/a Suplente</h3>
+        <p>Persona designada temporalmente para cubrir a un/a titular ausente. Recibe una inducción <strong>adaptada y abreviada</strong> (pasos 1–9), con accesos acotados al período de cobertura y seguimiento ajustado a la duración de la suplencia.</p>
+      </div>
+    </div>
+
+    <div class="etapas-wrap">
+      <div class="etapas-label">Filtrar por etapa</div>
+      <div class="etapas-row" id="chips-s">
+        <button class="etapa-btn es" onclick="filtrarEtapa('s','todos')">Todas</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('s','Antes del ingreso')">Antes del ingreso</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('s','Día 1')">Día 1</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('s','Primera semana')">Primera semana</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('s','Semanas 1–2')">Semanas 1–2</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('s','Primer mes')">Primer mes</button>
+      </div>
+    </div>
+
+    <div id="pasos-suplente"></div>
+
+    <div class="cierre-box s">
+      <blockquote style="color:var(--verde)">"Aunque tu paso sea temporal, tu servicio es permanente para quienes atiendes.<br>Gracias por tu compromiso."</blockquote>
+      <span>Cierre del Proceso · Corte de Apelaciones de La Serena</span>
+    </div>
+  </div>
+
+  <!-- ===================== PASANTE ===================== -->
+  <div class="panel" id="panel-pasante">
+    <div class="banner p">
+      <div class="banner-icon">📚</div>
+      <div>
+        <h3 style="color:var(--ambar)">Pasante / Practicante</h3>
+        <p>Estudiante o egresado/a que realiza prácticas profesionales o pasantías. Protocolo <strong>simplificado</strong>: sin acceso a sistemas sensibles, supervisión permanente de la unidad receptora y coordinación con la institución educacional. Pasos 1–9 en versión reducida.</p>
+      </div>
+    </div>
+
+    <div class="etapas-wrap">
+      <div class="etapas-label">Filtrar por etapa</div>
+      <div class="etapas-row" id="chips-p">
+        <button class="etapa-btn ep" onclick="filtrarEtapa('p','todos')">Todas</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('p','Antes del ingreso')">Antes del ingreso</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('p','Día 1')">Día 1</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('p','Primera semana')">Primera semana</button>
+        <button class="etapa-btn" onclick="filtrarEtapa('p','Semanas 1–2')">Semanas 1–2</button>
+      </div>
+    </div>
+
+    <div id="pasos-pasante"></div>
+
+    <div class="cierre-box p">
+      <blockquote style="color:var(--ambar)">"Tu práctica aquí es el inicio de tu carrera al servicio de la ciudadanía.<br>El Poder Judicial te da la bienvenida."</blockquote>
+      <span>Cierre del Proceso · Corte de Apelaciones de La Serena</span>
+    </div>
+  </div>
+
+  <!-- ===================== COMPARATIVO ===================== -->
+  <div class="panel" id="panel-comp">
+    <div class="section-title">Vista comparativa — los 10 pasos según categoría</div>
+    <div class="tabla-comp">
+      <div class="tc-head">
+        <span>#</span>
+        <span>Paso del protocolo</span>
+        <span style="color:#93c5fd">Titular</span>
+        <span style="color:#86efac">Suplente</span>
+        <span style="color:#fcd34d">Pasante</span>
+      </div>
+      <div id="tabla-rows"></div>
+    </div>
+
+    <div class="mt">
+      <div class="section-title">Leyenda de aplicación</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;">
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;background:var(--azul-med);border-radius:50%;display:inline-block"></span>Completo</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;background:var(--ambar-med);border-radius:50%;display:inline-block"></span>Adaptado / Reducido</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;background:#d1d5db;border-radius:50%;display:inline-block"></span>No aplica / Versión alternativa</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== RECURSOS ===================== -->
+  <div class="panel" id="panel-rec">
+    <div class="section-title">Documentos y recursos institucionales</div>
+    <div class="recursos-grid">
+
+      <div class="recurso-card">
+        <div class="rec-icon">📜</div>
+        <div class="rec-titulo">Código de Ética Judicial</div>
+        <div class="rec-desc">Acta 244-2025. Principios éticos que rigen la conducta de funcionarios del Poder Judicial de Chile.</div>
+        <a href="https://www.pjud.cl/docs/codigo-etica" target="_blank" class="rec-link">🔗 Ver en pjud.cl ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">🏛️</div>
+        <div class="rec-titulo">Portal Poder Judicial</div>
+        <div class="rec-desc">Sitio oficial con acceso a trámites, consulta de causas y recursos institucionales.</div>
+        <a href="https://www.pjud.cl" target="_blank" class="rec-link">🔗 Ir a pjud.cl ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">🔐</div>
+        <div class="rec-titulo">Intranet Institucional</div>
+        <div class="rec-desc">Acceso a plataformas internas, correo institucional y sistemas de gestión judicial.</div>
+        <a href="https://intranet.pjud.cl" target="_blank" class="rec-link">🔗 Intranet ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">📋</div>
+        <div class="rec-titulo">Consulta de Causas</div>
+        <div class="rec-desc">Sistema de consulta unificado de causas judiciales del Poder Judicial de Chile.</div>
+        <a href="https://oficinajudicialvirtual.pjud.cl" target="_blank" class="rec-link">🔗 Oficina Virtual ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">📚</div>
+        <div class="rec-titulo">Academia Judicial</div>
+        <div class="rec-desc">Cursos de capacitación y formación continua para funcionarios del Poder Judicial.</div>
+        <a href="https://www.academiajudicial.cl" target="_blank" class="rec-link">🔗 academiajudicial.cl ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">🛡️</div>
+        <div class="rec-titulo">Ley N°20.422 – Discapacidad</div>
+        <div class="rec-desc">Normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.</div>
+        <a href="https://www.bcn.cl/leychile/navegar?idNorma=1010903" target="_blank" class="rec-link">🔗 Ver en BCN ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">📊</div>
+        <div class="rec-titulo">Plan Estratégico 2026–2030</div>
+        <div class="rec-desc">Lineamientos estratégicos institucionales del Poder Judicial para el quinquenio 2026–2030.</div>
+        <a href="https://www.pjud.cl/planificacion" target="_blank" class="rec-link">🔗 Ver documento ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">📞</div>
+        <div class="rec-titulo">Contactos de soporte</div>
+        <div class="rec-desc">TI: Mesa de ayuda institucional · RRHH: Corporación Administrativa del PJ (CAPJ) · Prevención de Riesgos.</div>
+        <a href="https://www.capj.cl" target="_blank" class="rec-link">🔗 CAPJ ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">🚨</div>
+        <div class="rec-titulo">Plan de Emergencia y Evacuación</div>
+        <div class="rec-desc">Procedimientos y rutas de evacuación del edificio. Solicitarlo a la jefatura directa el primer día.</div>
+        <span style="font-size:12px;color:var(--gris-med);font-style:italic">Disponible en la unidad receptora</span>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">⚖️</div>
+        <div class="rec-titulo">Estatuto Administrativo</div>
+        <div class="rec-desc">Ley N°18.834. Norma los derechos y obligaciones de los funcionarios públicos de Chile.</div>
+        <a href="https://www.bcn.cl/leychile/navegar?idNorma=30653" target="_blank" class="rec-link">🔗 Ver en BCN ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">🏢</div>
+        <div class="rec-titulo">CAPJ – Corporación Administrativa</div>
+        <div class="rec-desc">Organismo que gestiona los recursos humanos, financieros y administrativos del PJ.</div>
+        <a href="https://www.capj.cl" target="_blank" class="rec-link">🔗 capj.cl ↗</a>
+      </div>
+
+      <div class="recurso-card">
+        <div class="rec-icon">💻</div>
+        <div class="rec-titulo">Manuales de Sistemas</div>
+        <div class="rec-desc">Guías de uso de los sistemas judiciales: SIRAJ, BUE, SITFA y otros. Disponibles en la intranet.</div>
+        <a href="https://intranet.pjud.cl/manuales" target="_blank" class="rec-link">🔗 Ver manuales ↗</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-title">Elaboración y aprobación</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;color:var(--gris-med);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Elaborado por</div>
+        <div style="font-weight:600;font-size:14px">Juan Carlos Olave Soto</div>
+        <div style="font-size:12px;color:var(--gris-med)">Administrativo de Gestión</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;color:var(--gris-med);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Revisado por</div>
+        <div style="font-weight:600;font-size:14px">Magaly Retamales Venegas</div>
+        <div style="font-size:12px;color:var(--gris-med)">Jefa Unidad Control de Gestión</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;color:var(--gris-med);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Aprobado por</div>
+        <div style="font-weight:600;font-size:14px">Miriam Véliz Cortés</div>
+        <div style="font-size:12px;color:var(--gris-med)">Administradora</div>
+      </div>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem;">
+        <div style="font-size:11px;color:var(--gris-med);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Autorizado por</div>
+        <div style="font-weight:600;font-size:14px">Marcela Sandoval Durán</div>
+        <div style="font-size:12px;color:var(--gris-med)">Presidenta de la Corte</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<footer>
+  <strong>Corte de Apelaciones de La Serena · Poder Judicial de Chile</strong><br>
+  Protocolo de Bienvenida para Nuevos Funcionarios · Versión 2 · Enero 2026
+</footer>
+
+<script>
+const PASOS = [
+  { num:1, titulo:"Preparación previa al ingreso", etapa:"Antes del ingreso", icono:"📋",
+    t:{ nota:"", acciones:["Confirmar fecha y hora de ingreso con la persona y la Administración.","Coordinar habilitación de accesos: correo institucional, sistemas judiciales, intranet y registro de asistencia.","Preparar puesto de trabajo con insumos y materiales esenciales.","Verificar si la persona cuenta con ficha o certificado de discapacidad (Ley N°20.422) para aplicar ajustes razonables.","Preparar el Kit de Bienvenida para su entrega el primer día.","Informar a personal de seguridad sobre la incorporación y fecha de ingreso."]},
+    s:{ nota:"Abreviado", acciones:["Confirmar fecha y duración estimada de la suplencia.","Coordinar accesos básicos necesarios para la función específica de cobertura.","Preparar el puesto de trabajo del/la titular ausente.","Verificar necesidad de ajustes razonables (Ley N°20.422) si corresponde.","Informar a seguridad sobre el ingreso temporal."]},
+    p:{ nota:"Simplificado", acciones:["Confirmar fechas de inicio y término con la institución educacional y la Administración.","Coordinar acceso supervisado y acotado a los sistemas estrictamente necesarios.","Habilitar espacio de trabajo dentro de la unidad receptora.","Verificar necesidad de ajustes razonables (Ley N°20.422) si corresponde."]}
+  },
+  { num:2, titulo:"Recepción inicial y bienvenida personal", etapa:"Día 1", icono:"🤝",
+    t:{ nota:"", acciones:["Recibir personalmente a la persona, reforzando cercanía y liderazgo institucional.","Presentarse e informar la agenda del día: actividades, horarios y personas de referencia.","Acompañar al proceso de acreditación y enrolamiento en registro de asistencia.","Presentar brevemente a las personas del equipo antes del recorrido formal."]},
+    s:{ nota:"Adaptado", acciones:["Recibir personalmente a la persona, destacando el carácter temporal del rol.","Informar la agenda del día y las prioridades inmediatas de la cobertura.","Acompañar al proceso de acreditación y registro."]},
+    p:{ nota:"Adaptado", acciones:["Recibir personalmente al/la pasante o practicante con trato cordial y profesional.","Informar la agenda del día, el rol de la unidad y las normas básicas de convivencia.","Gestionar credencial o acceso provisional identificado como practicante/pasante."]}
+  },
+  { num:3, titulo:"Presentación del equipo y recorrido por dependencias", etapa:"Día 1", icono:"🗺️",
+    t:{ nota:"", acciones:["Presentar al equipo directo, explicando brevemente el rol de cada persona.","Mostrar el puesto de trabajo asignado y sus recursos disponibles.","Recorrido por: salas de audiencia, unidades de trabajo, áreas comunes, servicios higiénicos.","Señalar salidas de evacuación, puntos de encuentro y protocolos de seguridad."]},
+    s:{ nota:"Reducido", acciones:["Presentar al equipo con el que interactuará durante la suplencia.","Recorrido abreviado: puesto de trabajo, servicios higiénicos y rutas de evacuación.","Señalar salidas de emergencia y protocolos de seguridad."]},
+    p:{ nota:"Reducido", acciones:["Presentar a las personas de la unidad receptora.","Recorrido por las dependencias de la unidad y áreas de uso común.","Informar sobre rutas de evacuación y normas de seguridad."]}
+  },
+  { num:4, titulo:"Entrega del Kit de Bienvenida", etapa:"Día 1", icono:"📦",
+    t:{ nota:"Kit completo", acciones:["Organigrama de la Corte / Tribunal / Centro de Apoyo.","Misión, visión y valores del Poder Judicial.","Reglamento interno y Decálogo de Convivencia.","Plan Anual de Trabajo y Plan Plurianual 2026–2030.","Código de Ética Judicial (Acta 244-2025) y glosario de términos jurídicos.","Descripción de cargo, Metas de Desempeño Colectivo (MDC) y Metas de Eficiencia Institucional (MEI).","Directorio de contactos de soporte: TI, RRHH, Prevención de Riesgos.","Plan de Emergencia y Evacuación."]},
+    s:{ nota:"Kit reducido", acciones:["Organigrama con identificación de la unidad y equipo directo.","Reglamento interno, Decálogo de Convivencia y normas básicas de conducta.","Descripción del cargo en cobertura y tareas prioritarias del período.","Directorio de contactos esenciales: TI, RRHH y supervisor/a directo/a.","Plan de Emergencia y Evacuación."]},
+    p:{ nota:"Kit simplificado", acciones:["Organigrama de la unidad receptora.","Misión, visión y valores del Poder Judicial (versión resumida).","Normas de convivencia y conducta institucional.","Descripción de actividades asignadas y objetivos de la práctica/pasantía.","Plan de Emergencia y Evacuación."]}
+  },
+  { num:5, titulo:"Inducción institucional", etapa:"Primera semana", icono:"🏛️",
+    t:{ nota:"", acciones:["Explicar la estructura del Poder Judicial: Corte Suprema, Cortes de Apelaciones, tribunales de primera instancia y unidades de apoyo.","Explicar el rol de los tribunales y unidades en el sistema de justicia.","Transmitir los principios rectores: probidad, transparencia y servicio público.","Presentar la cultura organizacional, valores y expectativas institucionales."]},
+    s:{ nota:"Resumida", acciones:["Descripción abreviada de la estructura y el rol de la unidad en el sistema judicial.","Principios rectores básicos: probidad, transparencia y servicio público.","Expectativas de conducta durante el período de suplencia."]},
+    p:{ nota:"Enfocada en unidad", acciones:["Breve explicación del rol de la Corte de Apelaciones y de la unidad receptora.","Valores y principios básicos de conducta en el Poder Judicial."]}
+  },
+  { num:6, titulo:"Inducción específica del cargo", etapa:"Primera semana", icono:"💼",
+    t:{ nota:"", acciones:["Revisar en detalle la descripción del cargo y funciones principales.","Explicar procesos de trabajo, flujos internos y protocolos específicos de la unidad.","Informar sobre indicadores, métricas relevantes y metas del cargo.","Definir las prioridades para las primeras semanas de trabajo."]},
+    s:{ nota:"Focalizada en cobertura", acciones:["Explicar las funciones específicas que cubrirá durante la suplencia.","Revisar los procesos y flujos internos urgentes o prioritarios.","Entregar listado de tareas y responsabilidades inmediatas del período."]},
+    p:{ nota:"Orientada a aprendizaje", acciones:["Explicar las actividades y tareas asignadas durante la práctica/pasantía.","Revisar los procedimientos básicos de la unidad que aplican al rol.","Definir los objetivos de aprendizaje y los entregables esperados."]}
+  },
+  { num:7, titulo:"Habilitación de accesos y herramientas tecnológicas", etapa:"Primera semana", icono:"💻",
+    t:{ nota:"", acciones:["Activación y configuración del correo institucional.","Acceso a sistemas judiciales correspondientes al cargo.","Acceso a intranet y plataformas internas de gestión.","Capacitación inicial en herramientas digitales institucionales.","Entrega de links y manuales de uso de sistemas."]},
+    s:{ nota:"Accesos temporales", acciones:["Activación del correo institucional temporal (por el período de suplencia).","Acceso acotado a los sistemas estrictamente necesarios para las funciones de cobertura.","Acceso a manuales o guías rápidas de los sistemas que utilizará."]},
+    p:{ nota:"Acceso supervisado", acciones:["Correo de acceso restringido o cuenta supervisada, si aplica según convenio con institución educacional.","Acceso exclusivamente a sistemas no sensibles y previamente autorizados por la jefatura.","Entrega de materiales o guías de uso para las herramientas autorizadas."]}
+  },
+  { num:8, titulo:"Revisión de documentación administrativa", etapa:"Primera semana", icono:"📄",
+    t:{ nota:"", acciones:["Verificar el nombramiento emitido por la Presidencia de la Corte mediante resolución exenta.","Revisar la descripción de funciones y perfil del cargo definido por la unidad.","Firmar compromiso de confidencialidad y uso responsable de la información (protección de datos y reserva de causas).","Registrar la inducción y capacitación inicial en el formulario correspondiente."]},
+    s:{ nota:"Documentación adaptada", acciones:["Verificar la resolución o decreto de suplencia emitido por la Presidencia de la Corte.","Firmar compromiso de confidencialidad durante el período de suplencia.","Registrar el proceso de inducción inicial."]},
+    p:{ nota:"Convenio de práctica", acciones:["Verificar vigencia del convenio entre la institución educacional y la Corte.","Firmar acuerdo de confidencialidad adaptado al rol de estudiante en práctica.","Registrar el inicio de la práctica en el formulario institucional correspondiente."]}
+  },
+  { num:9, titulo:"Capacitación inicial y figura de tutor/a", etapa:"Semanas 1–2", icono:"👥",
+    t:{ nota:"", acciones:["Asignar un/a tutor/a o funcionario/a de referencia de la misma unidad o área.","El/la tutor/a orientará en la aplicación práctica de lo aprendido en la inducción.","Resolver dudas sobre procedimientos internos, normativas y cultura organizacional.","Supervisar las primeras tareas, asegurando calidad y apego a la normativa."]},
+    s:{ nota:"Referencia rápida", acciones:["Designar una persona de referencia para consultas durante la suplencia.","Resolver dudas operativas urgentes sobre el cargo en cobertura."]},
+    p:{ nota:"Tutor/a de unidad y académico/a", acciones:["Asignar un/a tutor/a de la unidad que supervise las actividades de la práctica/pasantía.","Coordinar con el/la tutor/a académico/a de la institución educacional cuando corresponda.","El/la tutor/a facilitará la integración al entorno laboral y resolverá dudas prácticas."]}
+  },
+  { num:10, titulo:"Seguimiento y acompañamiento inicial", etapa:"Primer mes", icono:"📈",
+    t:{ nota:"", acciones:["Reuniones semanales: revisar avances, nivel de integración al equipo y detectar dificultades.","Revisión de desempeño a los 30 días: evaluar cumplimiento, identificar fortalezas y áreas de mejora.","Espacios de preguntas y retroalimentación: comunicación abierta y bidireccional.","Ajuste de tareas o apoyos: reasignar funciones si hay sobrecargas; facilitar capacitaciones adicionales."]},
+    s:{ nota:"Ajustado a la suplencia", acciones:["Revisión periódica ajustada a la duración de la suplencia (mínimo una instancia formal).","Canal abierto para consultas y apoyo durante el período de cobertura."]},
+    p:{ aplica:false, nota:"Versión alternativa", acciones:["Evaluación final de la práctica/pasantía al término del período, coordinada con la institución educacional.","Retroalimentación al/la pasante o practicante sobre su desempeño y aprendizajes."]}
+  }
+];
+
+const ETAPAS = ["Antes del ingreso","Día 1","Primera semana","Semanas 1–2","Primer mes"];
+const CAT_COLORS = { t:'nt', s:'ns', p:'np' };
+const CHIP_COLORS = { t:'chip-t', s:'chip-s', p:'chip-p' };
+const DOT_COLORS = { t:'dt', s:'ds', p:'dp' };
+let etapaActual = { t:'todos', s:'todos', p:'todos' };
+
+function buildPasos(tipo) {
+  const cont = document.getElementById('pasos-' + (tipo==='t'?'titular':tipo==='s'?'suplente':'pasante'));
+  const etapa = etapaActual[tipo];
+  const filtered = etapa === 'todos' ? PASOS : PASOS.filter(p => p[tipo] && p.etapa === etapa);
+  cont.innerHTML = '';
+  filtered.forEach(paso => {
+    const d = paso[tipo];
+    if (!d) return;
+    const notaBadge = d.nota ? `<span class="chip ${CHIP_COLORS[tipo]}">${d.nota}</span>` : '';
+    const etapaBadge = `<span class="chip chip-g">${paso.etapa}</span>`;
+    const aplicaBadge = d.aplica === false ? `<span class="chip" style="background:#fee2e2;color:#991b1b">Versión alternativa</span>` : '';
+    const acciones = d.acciones.map(a => `
+      <div class="accion">
+        <span class="accion-dot ${DOT_COLORS[tipo]}"></span>
+        <span>${a}</span>
+      </div>`).join('');
+    const el = document.createElement('div');
+    el.className = 'paso-card';
+    el.dataset.etapa = paso.etapa;
+    el.innerHTML = `
+      <div class="paso-head" onclick="togglePaso(this)">
+        <div class="paso-num ${CAT_COLORS[tipo]}">${paso.num}</div>
+        <div class="paso-info">
+          <div class="paso-tit">${paso.icono} ${paso.titulo}</div>
+          <div class="paso-chips">${etapaBadge}${notaBadge}${aplicaBadge}</div>
+        </div>
+        <span class="paso-toggle">▾</span>
+      </div>
+      <div class="paso-body">
+        <div class="alcance-note">ℹ️ ${paso.etapa} · ${getAlcance(paso.etapa)}</div>
+        ${acciones}
+      </div>`;
+    cont.appendChild(el);
+  });
+}
+
+function getAlcance(e) {
+  const m = { 'Antes del ingreso':'Acciones previas al primer día', 'Día 1':'Primer contacto presencial', 'Primera semana':'Inducción y habilitación inicial', 'Semanas 1–2':'Formación y acompañamiento', 'Primer mes':'Seguimiento y adaptación' };
+  return m[e] || e;
+}
+
+function togglePaso(head) {
+  const body = head.nextElementSibling;
+  const tog = head.querySelector('.paso-toggle');
+  body.classList.toggle('open');
+  tog.classList.toggle('open');
+}
+
+function filtrarEtapa(tipo, etapa) {
+  etapaActual[tipo] = etapa;
+  const prefix = tipo==='t'?'et':tipo==='s'?'es':'ep';
+  document.querySelectorAll(`#chips-${tipo} .etapa-btn`).forEach(b => {
+    b.className = 'etapa-btn';
+    if (b.textContent.trim() === 'Todas' && etapa==='todos') b.classList.add(prefix);
+    if (b.textContent.trim() === etapa) b.classList.add(prefix);
+  });
+  buildPasos(tipo);
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.tab-btn2').forEach(b => { b.className = 'tab-btn2'; });
+  const order = ['titular','suplente','pasante','comp','rec'];
+  const cls = ['at','as','ap','ac','ac'];
+  const idx = order.indexOf(tab);
+  document.getElementById('panel-' + tab).classList.add('show');
+  document.querySelectorAll('.tab-btn2')[idx].classList.add(cls[idx]);
+  // sync hero cats
+  document.querySelectorAll('.hero-cat').forEach(c => c.classList.remove('sel'));
+  if (tab==='titular') document.querySelector('.hero-cat.t').classList.add('sel');
+  if (tab==='suplente') document.querySelector('.hero-cat.s').classList.add('sel');
+  if (tab==='pasante') document.querySelector('.hero-cat.p').classList.add('sel');
+}
+
+function buildComparativa() {
+  const cont = document.getElementById('tabla-rows');
+  cont.innerHTML = PASOS.map(p => {
+    const tD = p.t; const sD = p.s; const pD = p.p || {};
+    const tOk = `<span class="tc-ok t">✔ ${tD.nota||'Completo'}</span>`;
+    const sOk = sD ? `<span class="tc-ok s">✔ ${sD.nota||'Completo'}</span>` : `<span class="tc-no">—</span>`;
+    const pOk = pD.aplica===false
+      ? `<span style="font-size:12px;color:var(--ambar-med)">⚡ Alt.</span>`
+      : pD.acciones ? `<span class="tc-ok p">✔ ${pD.nota||'Completo'}</span>` : `<span class="tc-no">—</span>`;
+    return `<div class="tc-row">
+      <span class="tc-num">${p.num}</span>
+      <span class="tc-paso">${p.icono} ${p.titulo}</span>
+      ${tOk}${sOk}${pOk}
+    </div>`;
+  }).join('');
+}
+
+// Init
+['t','s','p'].forEach(buildPasos);
+buildComparativa();
+// Open first paso in each panel by default
+setTimeout(()=>{
+  document.querySelectorAll('.paso-head').forEach((h,i)=>{ if(i===0||i===10||i===19) { h.querySelector('.paso-toggle').classList.add('open'); h.nextElementSibling.classList.add('open'); } });
+},100);
+</script>
+</body>
+</html>
